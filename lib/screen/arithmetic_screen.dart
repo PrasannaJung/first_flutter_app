@@ -29,13 +29,22 @@ class _ArithmeticScreenState extends State<ArithmeticScreen> {
         child: Column(
           children: [
             TextField(
+
               onChanged: (value) {
                 first = int.parse(value);
               },
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Enter First No',
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.red),
+                  ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.green)
+                ),
+                labelText: "Enter the first no."
               ),
             ),
             const SizedBox(height: 8),
@@ -101,6 +110,7 @@ class _ArithmeticScreenState extends State<ArithmeticScreen> {
                 fontSize: 30,
               ),
             ),
+
           ],
         ),
       ),

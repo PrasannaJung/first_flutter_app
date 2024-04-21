@@ -87,7 +87,52 @@ class _SimpleInterestScreenState extends State<SimpleInterestScreen> {
                 fontSize: 30,
               ),
             ),
+            RichText(text: TextSpan(
+              text: "Hello",
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 30
+              ),
+              children: [
+                TextSpan(
+                  text:'bold',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.amber
+                  )
+                ),
+                TextSpan(
+                  text: ' world!'
+                )
+              ]
+            )),
+            RichText(text: TextSpan(
+              children: [
+                TextSpan(
+                  text:"M",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                    fontSize: 30
+                  ),
+                ),
+                TextSpan(
+                  text:"y",
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
 
+                ),
+                TextSpan(
+                  text:"name",
+                  style: TextStyle(
+
+                  )
+                ),
+                TextSpan(text: "is"),
+                TextSpan(text:"Prasanna")
+              ]
+            ))
           ],
         ),
       ),
