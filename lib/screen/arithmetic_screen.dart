@@ -8,7 +8,7 @@ class ArithmeticScreen extends StatefulWidget {
 }
 
 class _ArithmeticScreenState extends State<ArithmeticScreen> {
-// Delcare variables
+
   int? first;
   int? second;
   int sumResult = 0;
@@ -16,10 +16,11 @@ class _ArithmeticScreenState extends State<ArithmeticScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String? operation = "Add";
     return Scaffold(
       backgroundColor: Colors.green[100],
       appBar: AppBar(
-        title: const Text("Arithmetic"),
+        title: const Text("Prasanna Jung Thapa"),
         backgroundColor: Colors.green,
         centerTitle: true,
         elevation: 0,
@@ -29,21 +30,12 @@ class _ArithmeticScreenState extends State<ArithmeticScreen> {
         child: Column(
           children: [
             TextField(
-
               onChanged: (value) {
                 first = int.parse(value);
               },
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                  ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.green)
-                ),
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
                 labelText: "Enter the first no."
               ),
             ),
@@ -59,6 +51,18 @@ class _ArithmeticScreenState extends State<ArithmeticScreen> {
               ),
             ),
             const SizedBox(height: 8),
+            Row(children: [ Radio(value: "Add", groupValue: operation, onChanged: (value){setState(() {
+              operation = value!;
+            });}),Text("Add")],),
+            Row(children: [ Radio(value: "Add", groupValue: operation, onChanged: (value){setState(() {
+              operation = value!;
+            });}),Text("Subtract")],),
+            Row(children: [ Radio(value: "Add", groupValue: operation, onChanged: (value){setState(() {
+              operation = value!;
+            });}),Text("Multiply")],),
+            Row(children: [ Radio(value: "Add", groupValue: operation, onChanged: (value){setState(() {
+              operation = value!;
+            });}),Text("Divide")],),
             // Button
             SizedBox(
               width: double.infinity,
