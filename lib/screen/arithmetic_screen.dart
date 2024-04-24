@@ -9,14 +9,13 @@ class ArithmeticScreen extends StatefulWidget {
 
 class _ArithmeticScreenState extends State<ArithmeticScreen> {
 
-  int? first;
-  int? second;
-  int sumResult = 0;
-  int differenceResult = 0;
+  double? first;
+  double? second;
+  double _result = 0;
+  double output = 0;
 
   @override
   Widget build(BuildContext context) {
-    String? operation = "Add";
     return Scaffold(
       backgroundColor: Colors.green[100],
       appBar: AppBar(
@@ -31,7 +30,7 @@ class _ArithmeticScreenState extends State<ArithmeticScreen> {
           children: [
             TextField(
               onChanged: (value) {
-                first = int.parse(value);
+                first = double.parse(value);
               },
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
@@ -42,7 +41,7 @@ class _ArithmeticScreenState extends State<ArithmeticScreen> {
             const SizedBox(height: 8),
             TextField(
               onChanged: (value) {
-                second = int.parse(value);
+                second = double.parse(value);
               },
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
@@ -51,26 +50,64 @@ class _ArithmeticScreenState extends State<ArithmeticScreen> {
               ),
             ),
             const SizedBox(height: 8),
-            Row(children: [ Radio(value: "Add", groupValue: operation, onChanged: (value){setState(() {
-              operation = value!;
-            });}),Text("Add")],),
-            Row(children: [ Radio(value: "Add", groupValue: operation, onChanged: (value){setState(() {
-              operation = value!;
-            });}),Text("Subtract")],),
-            Row(children: [ Radio(value: "Add", groupValue: operation, onChanged: (value){setState(() {
-              operation = value!;
-            });}),Text("Multiply")],),
-            Row(children: [ Radio(value: "Add", groupValue: operation, onChanged: (value){setState(() {
-              operation = value!;
-            });}),Text("Divide")],),
-            // Button
+            RadioListTile(
+                title: const Text('Add'),
+                value: 1.0,
+                groupValue: _result,
+                onChanged: (value) {
+                  setState(() {
+                    _result = value!;
+                  });
+                }),
+            RadioListTile(
+                title: const Text('Subtract'),
+                value: 2.0,
+                groupValue: _result,
+                onChanged: (value) {
+                  setState(() {
+                    _result = value!;
+                  });
+                }),
+            RadioListTile(
+                title: const Text('Multiply'),
+                value: 3.0,
+                groupValue: _result,
+                onChanged: (value) {
+                  setState(() {
+                    _result = value!;
+                  });
+                }),
+            RadioListTile(
+                title: const Text('Divide'),
+                value: 4.0,
+                groupValue: _result,
+                onChanged: (value) {
+                  setState(() {
+                    _result = value!;
+                  });
+                }),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  setState(() {
-                    sumResult = first! + second!;
-                  });
+                  if (first != null && second != null && _result != null) {
+                    setState(() {
+                      switch (_result) {
+                        case 1.0:
+                          output = first! + second!;
+                          break;
+                        case 2.0:
+                          output = first! - second!;
+                          break;
+                        case 3.0:
+                          output = first! * second!;
+                          break;
+                        case 4.0:
+                          output = first! / second!;
+                          break;
+                      }
+                    });
+                  }
                 },
                 child: const Text(
                   'Add',
@@ -84,37 +121,11 @@ class _ArithmeticScreenState extends State<ArithmeticScreen> {
 
             // Display informatuion
             Text(
-              'Sum is : $sumResult',
+              'The result is : $output',
               style: const TextStyle(
                 fontSize: 30,
               ),
             ),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    differenceResult = first! - second!;
-                  });
-                },
-                child: const Text(
-                  'Add',
-                  style: TextStyle(
-                    fontSize: 25,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 8),
-
-            // Display informatuion
-            Text(
-              'Difference is : $differenceResult',
-              style: const TextStyle(
-                fontSize: 30,
-              ),
-            ),
-
           ],
         ),
       ),
