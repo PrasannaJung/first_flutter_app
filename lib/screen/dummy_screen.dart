@@ -6,34 +6,38 @@ class DummyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: Row(
-        children: [
-          Column(
-            children: [
-              Icon(Icons.phone_android),
-              SafeArea(child: Container(
-                child: Text("CALL"),
-              ),)
-            ],
-          ),
-          Column(
-            children: [
-              Icon(Icons.navigation),
-              SafeArea(child: Container(
-                child: Text("ROUTE"),
-              ),)
-            ],
-          ),
-          Column(
-            children: [
-              Icon(Icons.share),
-              SafeArea(child: Container(
-                child: Text("SHARE"),
-              ),)
-            ],
-          )
-        ],
-      ),
+      body: SafeArea(child: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Column(
+              children: [
+                Icon(Icons.call),
+                SafeArea(child: Container(
+                  child: Text("CALL"),
+                ),)
+              ],
+            ),
+            Column(
+              children: [
+                Icon(Icons.route),
+                SafeArea(child: Container(
+                  child: Text("ROUTE"),
+                ),)
+              ],
+            ),
+            Column(
+              children: [
+                Icon(Icons.share),
+                SafeArea(child: Container(
+                  child: Text("SHARE"),
+                ),)
+              ],
+            )
+          ],
+        ),
+      ),)
     );
   }
 }

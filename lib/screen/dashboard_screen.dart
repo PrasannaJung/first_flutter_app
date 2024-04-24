@@ -1,4 +1,5 @@
 import 'package:first_app/screen/area_of_circle_screen.dart';
+import 'package:first_app/screen/column_screen.dart';
 import 'package:first_app/screen/dummy_screen.dart';
 import 'package:first_app/screen/simple_interest_screen.dart';
 import 'package:flutter/material.dart';
@@ -80,6 +81,17 @@ class DashboardScreen extends StatelessWidget {
                 );
               },
               child: const Text('Dummy Screen'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ColumnScreen(),
+                  ),
+                );
+              },
+              child: const Text('Column Screen'),
             ),
           ],
         ),
