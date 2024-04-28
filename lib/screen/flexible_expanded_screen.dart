@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:first_app/common/my_snackbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class FlexibleExpandedScreen extends StatelessWidget {
   const FlexibleExpandedScreen({super.key});
@@ -19,9 +18,15 @@ class FlexibleExpandedScreen extends StatelessWidget {
                 width: double.infinity,
                 color: Colors.blueAccent,
                 child:  ElevatedButton(onPressed: (){
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text("Button 1 pressed"),duration: Duration(seconds: 3))
-                  );
+                  showMySnackBar(message: "Button 1 pressed", context: context);
+                  // ScaffoldMessenger.of(context).showSnackBar(
+                  //   const SnackBar(
+                  //       content: Text("Button 1 pressed"),
+                  //       duration: Duration(seconds: 3),
+                  //     backgroundColor: Colors.green,
+                  //     behavior: SnackBarBehavior.floating,
+                  //   )
+                  // );
                 }, child: const Text("One")),
               ),
             ),
@@ -31,7 +36,17 @@ class FlexibleExpandedScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 width: double.infinity,
                 color: Colors.lime,
-                child:  ElevatedButton(onPressed: (){}, child: const Text("Two")),
+                child:  ElevatedButton(onPressed: (){
+                  showMySnackBar(message: "Button 2 pressed", context: context, color: Colors.redAccent);
+                  // ScaffoldMessenger.of(context).showSnackBar(
+                  //     const SnackBar(
+                  //       content: Text("Button 2 pressed"),
+                  //       duration: Duration(seconds: 3),
+                  //       backgroundColor: Colors.redAccent,
+                  //       behavior: SnackBarBehavior.floating,
+                  //     )
+                  // );
+                }, child: const Text("Two")),
               ),
             )
           ],
