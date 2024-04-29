@@ -4,18 +4,26 @@ import 'package:flutter/material.dart';
 
 class ListTileCommon extends StatelessWidget {
   final int index;
-  const ListTileCommon({required this.index,super.key});
+  final String imagePath;
+  const ListTileCommon({required this.index, super.key, required this.imagePath,});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const Icon(Icons.accessible_forward),
+      leading: CircleAvatar(
+        backgroundImage: AssetImage("$imagePath"),
+      ),
       title: Text('Name $index'),
       subtitle: const Text("Bhaktapur, Nepal"),
       trailing: const Icon(Icons.delete),
-      onTap: (){
+      onTap: () {
         // showMySnackBar(message: "Clicked Name ${index}", context: context);
-        Navigator.push(context, MaterialPageRoute(builder: (context) =>  OutputScreen(outputData: "Name $index")));
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => OutputScreen(outputData: "Name $index"),
+          ),
+        );
       },
     );
   }

@@ -6,6 +6,7 @@ import 'package:first_app/screen/hello_world_screen.dart';
 import 'package:first_app/screen/list_tile_screen.dart';
 import 'package:first_app/screen/rows_and_columns.dart';
 import 'package:first_app/screen/simple_interest_screen.dart';
+import 'package:first_app/screen/students_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -14,7 +15,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: ListTileScreen(),
+      home: StudentsDetailsScreen(),
     );
   }
 }
