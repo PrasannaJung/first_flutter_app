@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 class ListTileCommon extends StatelessWidget {
   final int index;
   final String imagePath;
-  const ListTileCommon({required this.index, super.key, required this.imagePath,});
+  final String firstName;
+  final String address;
+  const ListTileCommon({required this.index, super.key, required this.imagePath,required this.firstName, required this.address});
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +15,15 @@ class ListTileCommon extends StatelessWidget {
       leading: CircleAvatar(
         backgroundImage: AssetImage("$imagePath"),
       ),
-      title: Text('Name $index'),
-      subtitle: const Text("Bhaktapur, Nepal"),
+      title: Text('$firstName'),
+      subtitle: Text('$address, Nepal'),
       trailing: const Icon(Icons.delete),
       onTap: () {
         // showMySnackBar(message: "Clicked Name ${index}", context: context);
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => OutputScreen(outputData: "Name $index"),
+            builder: (context) => OutputScreen(outputData: "$firstName"),
           ),
         );
       },

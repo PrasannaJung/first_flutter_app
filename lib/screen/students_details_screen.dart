@@ -1,4 +1,6 @@
+import 'package:first_app/common/list_tile_common.dart';
 import 'package:first_app/model/student_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class StudentsDetailsScreen extends StatefulWidget {
@@ -15,34 +17,87 @@ class _StudentsDetailsScreenState extends State<StudentsDetailsScreen> {
   String? lastName;
   String? address;
 
+  final _formKey = GlobalKey<FormState>();
+  StudentModel? student;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Column(
-        children: [
-          TextField(
-            keyboardType: TextInputType.text,
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "First Name"
+      body:  SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 4),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                children: [
+                  TextFormField(
+                    validator: (value){
+                      if(value == null || value.isEmpty){
+                        return 'Please enter your first name';
+                      }
+                    },
+                    onChanged: (value){
+                      firstName = value;
+                    },
+                    decoration: const InputDecoration(
+                        labelText: "Enter your first name",
+                        border: OutlineInputBorder()
+                    ),
+                  ),
+                  const SizedBox(height: 15,),
+                  TextFormField(
+                    validator: (value){
+                      if(value == null || value.isEmpty){
+                        return 'Please enter your last name';
+                      }
+                    },
+                    onChanged: (value){
+                      lastName = value;
+                    },
+                    decoration: const InputDecoration(
+                        labelText: "Enter your last name",
+                        border: OutlineInputBorder()
+                    ),
+                  ),
+                  const SizedBox(height: 15,),
+                  TextFormField(
+                    validator: (value){
+                      if(value == null || value.isEmpty){
+                        return 'Please enter your address';
+                      }
+                    },
+                    onChanged: (value){
+                      address = value;
+                    },
+                    decoration: const InputDecoration(
+                      labelText: "Enter your address",
+                      border: OutlineInputBorder()
+                    ),
+                  ),
+                  const SizedBox(height: 15,),
+                  ElevatedButton(onPressed: (){
+                    setState(() {
+                      student = StudentModel(firstName: firstName,lastName: lastName,address: address);
+                      studentsList.add(student!);
+                    });
+                  }, child: const Text("Add")),
+                  Container(
+                    child: Column(
+                      children: [
+                        for(int i = 0; i < studentsList.length; i++)
+                          ListTileCommon(index: i, imagePath: "assets/images/hazard_one.jpg", firstName: studentsList[i].firstName!, address: studentsList[i].address!)
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              ),
             ),
-          ),
-          TextField(
-            keyboardType: TextInputType.text,
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "Last Name"
-            ),
-          ),
-          TextField(
-            keyboardType: TextInputType.text,
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "Address Name"
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
